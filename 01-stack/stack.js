@@ -1,5 +1,4 @@
 // First In Last Out
-
 class Stack {
     constructor() {
         this.count = 0
@@ -58,4 +57,4 @@ class Stack {
     }
 }
 
-export default Stack
+module.exports = Stack
