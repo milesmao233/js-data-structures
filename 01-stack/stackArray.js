@@ -1,39 +1,39 @@
 class StackArray {
     constructor() {
-        this.items = [];
+        this.items = []
     }
 
     push(element) {
-        this.items.push(element);
+        this.items.push(element)
     }
 
     pop() {
-        this.items.pop();
+        this.items.pop()
     }
 
     peek() {
-        return this.items[this.items.length - 1];
+        return this.items[this.items.length - 1]
     }
 
     isEmpty() {
-        return this.items.length === 0;
+        return this.items.length === 0
     }
 
     size() {
-        return this.items.length;
+        return this.items.length
     }
 
     clear() {
-        this.items = [];
+        this.items = []
     }
 
     toArray() {
-        return this.items;
+        return this.items
     }
 
     toString() {
-        return this.items.toString();
+        return this.items.toString()
     }
 }
 
-export default StackArray;
+export default StackArray
