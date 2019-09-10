@@ -57,4 +57,4 @@ class Stack {
     }
 }
 
-module.exports = Stack
+export default Stack

@@ -1,7 +1,7 @@
 // 问题：
 // 十进制转换为二进制
 
-const Stack = require('../stack')
+import Stack from '../stack'
 
 function decimaltoBinary(decNumber) {
     const remStack = new Stack()
@@ -20,4 +20,4 @@ function decimaltoBinary(decNumber) {
     return resultString
 }
 
-module.exports = decimaltoBinary
+export default decimaltoBinary

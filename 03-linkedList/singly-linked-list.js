@@ -11,6 +11,16 @@ class LinkedList {
         this.head = undefined
     }
 
+    setupListFromArray(arr) {
+        this.head = new Node(arr.shift())
+        let current = this.head
+        arr.forEach(item => {
+            current.next = new Node(item)
+            current = current.next
+        })
+        return this.head
+    }
+
     push(element) {
         const node = new Node(element)
         let current
@@ -27,48 +37,51 @@ class LinkedList {
     }
 
     getElementAt(index) {
-        if (index >= 0 && index <= this.count) {
-            let node = this.head
-            for (let i = 0; i < index && node != null; i++) {
-                node = node.next
-            }
-            return node
+        if (index < 0 && index > this.count) {
+            return undefined
         }
-        return undefined
+
+        let node = this.head
+        for (let i = 0; i < index && node != null; i++) {
+            node = node.next
+        }
+        return node
     }
 
     insert(element, index) {
-        if (index >= 0 && index <= this.count) {
-            const node = new Node(element)
-            if (index === 0) {
-                const current = this.head
-                node.next = current
-                this.head = node
-            } else {
-                const previous = this.getElementAt(index - 1)
-                node.next = previous.next
-                previous.next = node
-            }
-            this.count++
-            return true
+        if (index < 0 && index > this.count) {
+            return false
         }
-        return false
+
+        const node = new Node(element)
+        if (index === 0) {
+            const current = this.head
+            node.next = current
+            this.head = node
+        } else {
+            const previous = this.getElementAt(index - 1)
+            node.next = previous.next
+            previous.next = node
+        }
+        this.count++
+        return true
     }
 
     removeAt(index) {
-        if (index >= 0 && index < this.count) {
-            let current = this.head
-            if (index === 0) {
-                this.head = current.next
-            } else {
-                const previous = this.getElementAt(index - 1)
-                current = previous.next
-                previous.next = current.next
-            }
-            this.count--
-            return current.element
+        if (index < 0 && index > this.count) {
+            return undefined
         }
-        return undefined
+
+        let current = this.head
+        if (index === 0) {
+            this.head = current.next
+        } else {
+            const previous = this.getElementAt(index - 1)
+            current = previous.next
+            previous.next = current.next
+        }
+        this.count--
+        return current.element
     }
 
     indexOf(element) {
@@ -115,4 +128,4 @@ class LinkedList {
     }
 }
 
-module.exports = LinkedList
+export default LinkedList

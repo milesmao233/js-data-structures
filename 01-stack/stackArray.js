@@ -36,4 +36,4 @@ class StackArray {
     }
 }
 
-module.exports = StackArray
+export default StackArray

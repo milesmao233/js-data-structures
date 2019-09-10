@@ -1,0 +1,33 @@
+{
+    "name": "js-data-structures",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack-dev-server --open",
+        "build": "webpack --config webpack.config.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/milesmao233/js-data-structures.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/milesmao233/js-data-structures/issues"
+    },
+    "homepage": "https://github.com/milesmao233/js-data-structures#readme",
+    "devDependencies": {
+        "@babel/core": "^7.6.0",
+        "@babel/preset-env": "^7.6.0",
+        "babel-loader": "^8.0.6",
+        "clean-webpack-plugin": "^3.0.0",
+        "html-webpack-plugin": "^3.2.0",
+        "webpack": "^4.39.3",
+        "webpack-cli": "^3.3.8",
+        "webpack-dev-server": "^3.8.0"
+    },
+    "dependencies": {}
+}

@@ -1,6 +1,6 @@
 // 进制转换算法
 // 转换为2--32进制
-const Stack = require('../stack')
+import Stack from '../stack'
 
 function baseConverter(decNumber, base) {
     const remStack = new Stack()
@@ -22,4 +22,4 @@ function baseConverter(decNumber, base) {
     return resultString
 }
 
-module.exports = baseConverter
+export default baseConverter
