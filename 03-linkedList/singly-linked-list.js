@@ -8,26 +8,35 @@ class Node {
 class LinkedList {
     constructor() {
         this.count = 0
-        this.head = undefined
+        this._head = undefined
+    }
+
+    get head() {
+        return this._head
+    }
+
+    set head(value) {
+        return (this._head = value)
     }
 
     setupListFromArray(arr) {
-        this.head = new Node(arr.shift())
-        let current = this.head
+        this._head = new Node(arr.shift())
+        let current = this._head
         arr.forEach(item => {
             current.next = new Node(item)
             current = current.next
         })
-        return this.head
+        this.count = arr.length + 1
+        return this
     }
 
     push(element) {
         const node = new Node(element)
         let current
-        if (this.head == null) {
-            this.head = node
+        if (this._head == null) {
+            this._head = node
         } else {
-            current = this.head
+            current = this._head
             while (current.next != null) {
                 current = current.next
             }
@@ -41,7 +50,7 @@ class LinkedList {
             return undefined
         }
 
-        let node = this.head
+        let node = this._head
         for (let i = 0; i < index && node != null; i++) {
             node = node.next
         }
@@ -55,9 +64,9 @@ class LinkedList {
 
         const node = new Node(element)
         if (index === 0) {
-            const current = this.head
+            const current = this._head
             node.next = current
-            this.head = node
+            this._head = node
         } else {
             const previous = this.getElementAt(index - 1)
             node.next = previous.next
@@ -72,9 +81,9 @@ class LinkedList {
             return undefined
         }
 
-        let current = this.head
+        let current = this._head
         if (index === 0) {
-            this.head = current.next
+            this._head = current.next
         } else {
             const previous = this.getElementAt(index - 1)
             current = previous.next
@@ -85,7 +94,7 @@ class LinkedList {
     }
 
     indexOf(element) {
-        let current = this.head
+        let current = this._head
         for (let i = 0; i < this.size() && current != null; i++) {
             if (element === current.element) {
                 return i
@@ -107,24 +116,48 @@ class LinkedList {
     size() {
         return this.count
     }
-    getHead() {
-        return this.head
-    }
+
     clear() {
-        this.head = undefined
+        this._head = undefined
         this.count = 0
     }
+
+    toArray() {
+        let arr = Array.from()
+        let current = this._head
+        while (!current) {
+            arr.push(current)
+            current = current.next
+        }
+        return arr
+    }
+
     toString() {
-        if (this.head == null) {
+        if (this._head == null) {
             return ''
         }
-        let objString = `${this.head.element}`
-        let current = this.head.next
+        let objString = `${this._head.element}`
+        let current = this._head.next
         for (let i = 1; i < this.size() && current != null; i++) {
             objString = `${objString},${current.element}`
             current = current.next
         }
         return objString
+    }
+
+    reverseList() {
+        let prev = null
+        let current = this._head
+
+        while (current != null) {
+            let nextTemp = current.next
+            current.next = prev
+            prev = current
+            current = nextTemp
+        }
+        let newList = new LinkedList()
+        newList.head = prev
+        return newList
     }
 }
 

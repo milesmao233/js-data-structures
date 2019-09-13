@@ -41,8 +41,8 @@ let partion = (begin, end) => {
 export default function quickSort(begin, end) {
     if (begin !== end) {
         let part = partion(begin, end)
-        sort(begin, part)
-        sort(part.next, end)
+        quickSort(begin, part)
+        quickSort(part.next, end)
     }
 }
 
