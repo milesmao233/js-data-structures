@@ -155,9 +155,39 @@ class LinkedList {
             prev = current
             current = nextTemp
         }
-        let newList = new LinkedList()
-        newList.head = prev
-        return newList
+        this._head = prev
+        return this
+    }
+
+    checkCircle() {
+        let fast = this._head.next
+        let slow = this._head
+        while (fast !== null && fast.next !== null) {
+            fast = fast.next.next
+            slow = slow.next
+            if (slow === fast) return true
+        }
+        return false
+    }
+
+    // 求中间节点
+    findMiddleNode() {
+        let fast = this._head
+        let slow = this._head
+        while (fast.next !== null && fast.next.next !== null) {
+            fast = fast.next.next
+            slow = slow.next
+        }
+        return slow
+    }
+
+    // 删除倒数第k个节点
+    removeByIndexFromEnd(index) {
+        //务必先判断是否是 环链表
+        if (this.checkCircle()) return false
+        this.reverseList()
+        this.removeAt(index)
+        this.reverseList()
     }
 }
 
