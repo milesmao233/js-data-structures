@@ -123,10 +123,10 @@ class LinkedList {
     }
 
     toArray() {
-        let arr = Array.from()
+        let arr = []
         let current = this._head
-        while (!current) {
-            arr.push(current)
+        while (current) {
+            arr.push(current.element)
             current = current.next
         }
         return arr
